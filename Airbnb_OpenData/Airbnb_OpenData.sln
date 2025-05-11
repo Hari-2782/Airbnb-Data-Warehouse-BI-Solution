@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Airbnb_OpenData", "Airbnb_OpenData.dtproj", "{D777E213-779D-8176-C283-BEFCC1CDF0C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D777E213-779D-8176-C283-BEFCC1CDF0C7}.Development|Default.ActiveCfg = Development
+		{D777E213-779D-8176-C283-BEFCC1CDF0C7}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB2354A5-5AEC-42F3-B504-BD152E59F06A}
+	EndGlobalSection
+EndGlobal

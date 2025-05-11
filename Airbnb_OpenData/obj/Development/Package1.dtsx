@@ -1,0 +1,900 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/1/2025 12:36:35 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-SIJPUOP"
+  DTS:CreatorName="DESKTOP-SIJPUOP\asus"
+  DTS:DTSID="{570449D4-F777-4EC8-8CD8-211A7D7ED663}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{BA00373B-D0E3-4C8B-8508-65053DD5907D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B77B19B4-8580-404F-8578-C80DA29DB6A5}"
+      DTS:ObjectName="DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-SIJPUOP\MSSQLSERVER01;Initial Catalog=Airbnb_OpenDataDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{B77B19B4-8580-404F-8578-C80DA29DB6A5}DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataStaging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D98F1243-E5A3-4A75-9A4E-BF24C5120C6B}"
+      DTS:ObjectName="DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataStaging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-SIJPUOP\MSSQLSERVER01;Initial Catalog=Airbnb_OpenDataStaging;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{D98F1243-E5A3-4A75-9A4E-BF24C5120C6B}DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataStaging;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Update completetime data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{616D905F-E350-4C33-B41E-4BE3BE7266CD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update completetime data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update completetime data\Extract From CompleteTime data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract From CompleteTime data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CompletedTimeStg]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update completetime data\Extract From CompleteTime data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataStaging]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataStaging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].Columns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].ExternalColumns[accm_txn_complete_time]"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].Columns[accm_txn_complete_time]"
+                      name="accm_txn_complete_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].Columns[txn_id]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].ExternalColumns[txn_id]"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].Columns[txn_id]"
+                      name="txn_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].ExternalColumns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_complete_time" />
+                    <externalMetadataColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].ExternalColumns[txn_id]"
+                      dataType="i2"
+                      name="txn_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[accm_txn_complete_time]"
+                      name="accm_txn_complete_time" />
+                    <outputColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[txn_id]"
+                      dataType="i2"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[txn_id]"
+                      name="txn_id" />
+                    <outputColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update completetime data\Update Complete Time data"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update Complete Time data"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Fact_ListingTransaction]
+SET [accm_txn_complete_time] = ?
+WHERE [txn_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update completetime data\Update Complete Time data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input].Columns[accm_txn_complete_time]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="accm_txn_complete_time"
+                      externalMetadataColumnId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].Columns[accm_txn_complete_time]" />
+                    <inputColumn
+                      refId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input].Columns[txn_id]"
+                      cachedDataType="i2"
+                      cachedName="txn_id"
+                      externalMetadataColumnId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output].Columns[txn_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="i4"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update completetime data\Update Complete Time data.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update completetime data\Update Complete Time data.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update completetime data\Update Complete Time data.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update completetime data\Update Complete Time data.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update completetime data\Update Complete Time data.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update completetime data\Update Complete Time data.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update completetime data.Paths[OLE DB Source Output]"
+              endId="Package\Update completetime data\Update Complete Time data.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\Update completetime data\Extract From CompleteTime data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Process Time"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{496AE485-EDFA-4490-8CF0-60DD4F1FDD7F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Process Time"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Update Process Time\Load Time Data"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Load Time Data"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact_ListingTransaction]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Process Time\Load Time Data.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[txn_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[txn_id]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[txn_id]"
+                      name="txn_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[listing_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[listing_key]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[listing_key]"
+                      name="listing_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[host_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[host_key]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[host_key]"
+                      name="host_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[policy_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[policy_key]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[policy_key]"
+                      name="policy_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[location_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[location_key]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[location_key]"
+                      name="location_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[date_key]"
+                      name="date_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[price]"
+                      name="price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[service_fee]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[service_fee]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[service_fee]"
+                      name="service_fee"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[accm_txn_create_time]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[accm_txn_create_time]"
+                      name="accm_txn_create_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[accm_txn_complete_time]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[accm_txn_complete_time]"
+                      name="accm_txn_complete_time"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[txn_process_time_hours]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[txn_process_time_hours]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[txn_process_time_hours]"
+                      name="txn_process_time_hours"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[txn_id]"
+                      dataType="i4"
+                      name="txn_id" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[listing_key]"
+                      dataType="i4"
+                      name="listing_key" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[host_key]"
+                      dataType="i4"
+                      name="host_key" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[policy_key]"
+                      dataType="i4"
+                      name="policy_key" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[location_key]"
+                      dataType="i4"
+                      name="location_key" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[price]"
+                      dataType="numeric"
+                      name="price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[service_fee]"
+                      dataType="numeric"
+                      name="service_fee"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_create_time" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      name="accm_txn_complete_time" />
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].ExternalColumns[txn_process_time_hours]"
+                      dataType="r8"
+                      name="txn_process_time_hours" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[txn_id]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[txn_id]"
+                      name="txn_id" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[listing_key]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[listing_key]"
+                      name="listing_key" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[host_key]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[host_key]"
+                      name="host_key" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[policy_key]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[policy_key]"
+                      name="policy_key" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[location_key]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[location_key]"
+                      name="location_key" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[date_key]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[date_key]"
+                      name="date_key" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[price]"
+                      dataType="numeric"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[price]"
+                      name="price"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[service_fee]"
+                      dataType="numeric"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[service_fee]"
+                      name="service_fee"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[accm_txn_create_time]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[accm_txn_create_time]"
+                      name="accm_txn_create_time" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[accm_txn_complete_time]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[accm_txn_complete_time]"
+                      name="accm_txn_complete_time" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[txn_process_time_hours]"
+                      dataType="r8"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[txn_process_time_hours]"
+                      name="txn_process_time_hours" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Update Process Time\Update process Time Fact"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update process Time Fact"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[Fact_ListingTransaction]
+SET [txn_process_time_hours] = DATEDIFF (Hh, accm_txn_create_time,accm_txn_complete_time)
+WHERE [txn_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Update Process Time\Update process Time Fact.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-SIJPUOP\MSSQLSERVER01.Airbnb_OpenDataDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input].Columns[txn_id]"
+                      cachedDataType="i4"
+                      cachedName="txn_id"
+                      externalMetadataColumnId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output].Columns[txn_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Update Process Time\Update process Time Fact.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Update Process Time\Update process Time Fact.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Update Process Time\Update process Time Fact.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Update process Time Fact.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Update Process Time\Update process Time Fact.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Update Process Time\Update process Time Fact.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Update Process Time.Paths[OLE DB Source Output]"
+              endId="Package\Update Process Time\Update process Time Fact.Inputs[OLE DB Command Input]"
+              name="OLE DB Source Output"
+              startId="Package\Update Process Time\Load Time Data.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{98CD4C77-98EE-4E0B-9CE7-92176708D1A4}"
+      DTS:From="Package\Update completetime data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Update Process Time" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202.4,41.6"
+          Id="Package\Update completetime data"
+          TopLeft="377.142857945695,87.1764705118217" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Update Process Time"
+          TopLeft="384.285715103758,175.117646905326" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="475.714286524726,128.776470511822">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.3411763935045"
+              Start="0,0"
+              End="0,38.8411763935045">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.8411763935045" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Update completetime data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\Update completetime data\Extract From CompleteTime data"
+          TopLeft="360.000000766346,79.5294116949953" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Update completetime data\Update Complete Time data"
+          TopLeft="373.571429366664,225.588235096381" />
+        <EdgeLayout
+          Id="Package\Update completetime data.Paths[OLE DB Source Output]"
+          TopLeft="477.785715066505,121.129411694995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,104.458823401385"
+              Start="0,0"
+              End="0,96.9588234013854">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,96.9588234013854" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update completetime data\Extract From CompleteTime data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Update Process Time">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200.8,41.6"
+          Id="Package\Update Process Time\Update process Time Fact"
+          TopLeft="745.999988883734,351.999994754791" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Update Process Time\Load Time Data"
+          TopLeft="746.999988868833,181.999997287989" />
+        <EdgeLayout
+          Id="Package\Update Process Time.Paths[OLE DB Source Output]"
+          TopLeft="823.399988868833,223.599997287989">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.0000000149013,128.399997466803"
+              Start="0,0"
+              End="23.0000000149013,120.899997466803">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.1999987334014" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.1999987334014"
+                    Point2="0,64.1999987334014"
+                    Point3="4,64.1999987334014" />
+                  <mssgle:LineSegment
+                    End="19.0000000149013,64.1999987334014" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.0000000149013,64.1999987334014"
+                    Point2="23.0000000149013,64.1999987334014"
+                    Point3="23.0000000149013,68.1999987334014" />
+                  <mssgle:LineSegment
+                    End="23.0000000149013,120.899997466803" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Update Process Time\Load Time Data">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
